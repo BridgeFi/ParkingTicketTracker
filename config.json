@@ -1,0 +1,5 @@
+{
+  "GCLOUD_PROJECT": "gold-pier-88912",
+  "GCLOUD_BUCKET": "gold-pier-88912-image_bucket",
+  "DATA_BACKEND": "datastore"
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Image upload</title>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<link rel="stylesheet" href="/stylesheets/style.css" />
+
+</head>
+<body>
+<% include ../header.ejs%>
+</div>
+
+<div class="body">
+
+<form id       =  "uploadForm"
+     enctype   =  "multipart/form-data"
+     action    =  "/upload"
+     method    =  "POST"
+>
+<label class="file-choose" id="fileLabelId">
+<input  id="fileChooseId" type="file" name="ticketPhoto" accept="image/*"   onchange="previewImage();"/>
+    Click to insert image
+</label>
+
+<div class="form-preview" id="previewForm">
+<img id="imagePreviewId" src="#" />
+<input id="submitId" type="submit" value="Upload Image" name="submit">
+
+</div>
+
+</form>
+</div>
+
+<script src="/javascripts/previewImage.js"></script>
+<img src="/images/progressBar.gif" id="animateProgressId"/>
+</body>
+</html>
+
+
