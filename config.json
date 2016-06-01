@@ -1,5 +1,5 @@
 {
-  "GCLOUD_PROJECT": "gold-pier-88912",
-  "GCLOUD_BUCKET": "gold-pier-88912-image_bucket",
+  "GCLOUD_PROJECT": "ara-fe-object-001",
+  "GCLOUD_BUCKET": "ara-fe-object-001",
   "DATA_BACKEND": "datastore"
 }

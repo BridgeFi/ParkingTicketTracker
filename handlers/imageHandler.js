@@ -2,29 +2,27 @@
 /*
  * Script that handle image uploads to bucket on gcloud
  */
-var config=require('./../config.json');
+var config = require('../config.json');
 
-
-var CLOUD_PROJ=config.GCLOUD_PROJECT;
-var CLOUD_BUCKET=config.GCLOUD_BUCKET;
+var CLOUD_PROJ = config.GCLOUD_PROJECT;
+var CLOUD_BUCKET = config.GCLOUD_BUCKET;
 
 var gcloud = require('gcloud');
-var storage=gcloud.storage({
-    projectId:CLOUD_PROJ
+var storage = gcloud.storage({
+    projectId: CLOUD_PROJ
 });
 
+var bucket = storage.bucket(CLOUD_BUCKET);
 
-var bucket=storage.bucket(CLOUD_BUCKET);
-
-function getPublicUrl (filename) {
+function getPublicUrl(filename) {
     return 'https://storage.googleapis.com/' + CLOUD_BUCKET + '/' + filename;
 }
 
-function sendUploadToGCS (req, res, next) {
+function sendUploadToGCS(req, res, next) {
     if (req.file === null || req.file === undefined) {
         return next();
     }
-    console.log("file: "+req.file.originalname);
+    console.log("file: " + req.file.originalname);
 
     var gcsname = Date.now() + req.file.originalname;
     var file = bucket.file(gcsname);
@@ -48,7 +46,7 @@ function sendUploadToGCS (req, res, next) {
 
 var multer = require('multer')({
     inMemory: true,	//save in temp memory
-    fileSize: 5 *1024*1024, // no larger than 5mb
+    fileSize: 5 * 1024 * 1024, // no larger than 5mb
     rename: function (fieldname, filename) {
         // generate a unique filename
         return filename.replace(/\W+/g, '-').toLowerCase() + Date.now();
