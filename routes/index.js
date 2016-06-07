@@ -12,27 +12,34 @@ router.post(
     '/upload',
     imageHandler.multer.single('ticketPhoto'),
     function (req, res, next) {
-
+        console.log("/upload");
         imageHandler.sendUploadToGCS(req, res, function (err, data) {
             var dataR = req.body;
+           // console.log("req.file: "+dataR);
             if (err || req.file === null || req.file === undefined) {
-                res.render('./image_upload/uploadError', {
+              /*  res.render('./image_upload/uploadError', {
                     errorType: "File upload error",
                     err:err
                 });
+                */
+                res.json({"response:":"error"});
             }else {
                 if (req.file && req.file.cloudStoragePublicUrl) {
                     dataR.imageUrl = req.file.cloudStoragePublicUrl;
                 }
                 datastore.create(dataR, function (err, savedData) {
                     if (err) {
-                        res.render('./image_upload/uploadError', {
+                       /* res.render('./image_upload/uploadError', {
                             errorType: "Database error",
                             err:err
-                        });
+                        });*/
+                        res.json({"response:":"error"});
+
                     } else {
                         console.log(JSON.stringify(req.body, null, 4));
-                        res.render('./image_upload/uploadSuccessful', {});
+                       // res.render('./image_upload/uploadSuccessful', {});
+                        res.json([{"response":req.file.originalname}]);
+
                     }
 
                 });
