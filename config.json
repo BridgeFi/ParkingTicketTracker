@@ -1,5 +1,8 @@
 {
   "GCLOUD_PROJECT": "ara-fe-object-001",
   "GCLOUD_BUCKET": "ara-fe-object-001",
-  "DATA_BACKEND": "datastore"
+  "DATA_BACKEND": "datastore",
+  "TWILIO_ACCOUNT_SID": "AC8f20ccdacbdced2ea31f798333394058",
+  "TWILIO_AUTH_TOKEN": "21d13a184cca2ff545c684e1672b275f",
+  "TWILIO_NUMBER": "+16507535911"
 }
